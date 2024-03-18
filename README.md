@@ -1,5 +1,15 @@
-# `ros2_cpp_template` package
+# `simple_random_trees` package
 ROS 2 C++ package.  [![Static Badge](https://img.shields.io/badge/ROS_2-Humble-34aec5)](https://docs.ros.org/en/humble/)
+
+## Description
+
+**ENG**: A simple path plannig [random tree algorithm variant](https://en.wikipedia.org/wiki/Rapidly_exploring_random_tree). Implemented with a focus on visualization, rather than being a comprehensive random tree planning system.
+
+**HUN**: Egy egyszerű útvonaltervezésre használható [véletlenszerű fa algoritmus](https://en.wikipedia.org/wiki/Rapidly_exploring_random_tree). Ez a megvalósítása a vizualizációra összpontosít, nem pedig egy átfogó véletlenszerű fa-alapú útvonal tervező rendszer.
+
+<p align="center"><img src="img/tree_anim.gif" width="60%" /></p>
+
+
 ## Packages and build
 
 It is assumed that the workspace is `~/ros2_ws/`.
@@ -9,7 +19,7 @@ It is assumed that the workspace is `~/ros2_ws/`.
 cd ~/ros2_ws/src
 ```
 ``` r
-git clone https://github.com/sze-info/ros2_cpp_template
+git clone https://github.com/horverno/simple_random_trees
 ```
 
 ### Build ROS 2 packages
@@ -17,9 +27,10 @@ git clone https://github.com/sze-info/ros2_cpp_template
 cd ~/ros2_ws
 ```
 ``` r
-colcon build --packages-select ros2_cpp_template --symlink-install
+colcon build --packages-select simple_random_trees --symlink-install
 ```
 
+### Run ROS 2 packages
 <details>
 <summary> Don't forget to source before ROS commands.</summary>
 
@@ -29,28 +40,29 @@ source ~/ros2_ws/install/setup.bash
 </details>
 
 ``` r
-ros2 launch ros2_cpp_template launch_example1.launch.py
+ros2 launch simple_random_trees launch_example1.launch.py
+```
+``` r
+ros2 run simple_random_trees display_tree_node
 ```
 
-# Delete this part if you are using it as a template
+## Diagram
 
-ROS 2 pacage template, to get started, use template by clicking on the Green button labeled [`Use this template`](https://github.com/sze-info/ros2_cpp_template/generate) / [`Create new repository`](https://github.com/sze-info/ros2_cpp_template/generate). 
+Made with [Mermaid diagram](https://mermaid.js.org/intro/):
 
-<p align="center"><img src="img/use_this_template01.png" width="60%" /></p>
+```mermaid
+flowchart LR
+
+A{{max_deg</br>param}}:::gray --> D([display_tree</br>node]):::gray
+B{{max_dist</br>param}}:::gray --> D
+C{{seed_size</br>param}}:::gray --> D
+D --> |visualization_msgs/marker_array| P[ /path_marker_topic</br>topic]:::gray
 
 
-Let's assume 
-- your Github username is `mycoolusername`
-- your ROS 2 repo shold be `cool_ros2_package`
+classDef light fill:#34aec5,stroke:#152742,stroke-width:2px,color:#152742  
+classDef dark fill:#152742,stroke:#34aec5,stroke-width:2px,color:#34aec5
+classDef white fill:#ffffff,stroke:#152742,stroke-width:2px,color:#152742
+classDef gray fill:#f6f8fa,stroke:#152742,stroke-width:2px,color:#152742
+classDef red fill:#ef4638,stroke:#152742,stroke-width:2px,color:#fff
 
-Replace everything in the cloned repo:
-
-- `ros2_cpp_template` >> `cool_ros2_package` (the folder was already renamed after `Use this template`)
-- `sze-info` >> `mycoolusername`
-- find all `todo` strings and fill the blanks
-
-The easiest way is VS code:
-
-<p align="center"><img src="img/replace01.png" width="60%" /></p>
-
-Now `colcon build` your ROS 2 package and you can start wokring.
+```
