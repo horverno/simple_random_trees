@@ -7,6 +7,7 @@
 #include <functional>
 #include <iostream>
 #include <stack>
+#include "visualization_msgs/msg/marker_array.hpp"
 
 class PointXY
 {

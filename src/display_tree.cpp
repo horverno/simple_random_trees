@@ -113,7 +113,7 @@ private:
         for (int i = 0; i < seed_size; i++)
         {
             auto traj_end_points = tree.getLeaves(node_actual);
-            RCLCPP_INFO_STREAM(this->get_logger(), "Number of leaves: " << traj_end_points.size() << " at iteration " << i);
+            // RCLCPP_INFO_STREAM(this->get_logger(), "Number of leaves: " << traj_end_points.size() << " at iteration " << i);
             for (size_t t = 0; t < traj_end_points.size(); t++)
             {
                 auto new_nodes = generateNewNode(traj_end_points[t]->pos, max_deg, 1.5);
